@@ -1,9 +1,14 @@
-import Welcome from "./components/Welcome"
+import"./App.css"
+import Navbar from "./components/Navbar";
+import DashBoard  from "./components/DashBoard";
+import Welcome from "./components/Welcome";
 function App(){
   return(
     <div>
-      <Welcome/>
-    </div>
+       <Navbar/>
+       <Welcome/>
+      <DashBoard/>
+        </div>
   );
   
 }

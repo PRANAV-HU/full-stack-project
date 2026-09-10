@@ -1,32 +1,64 @@
 import StatCard from "./StatCard";
 import TaskCard from "./TaskCard";
+import AddTask from  "./addtask"; 
+import {useState} from "react";
+
 
 function Dashboard() {
-    const tasks = [{title:"DSA",values:"all concepts",
-        status:"DONE"},
-    {title:"JAVA",values:"all concepts",
-        status:"DONE"},{title:"DATABASE",values:"alla concepts",
-        status:"PENDING"}]
-    return (
-        <main>
-
+    const [tasks, setTasks] = useState([
+        {
+            id:1,
+            title:"Learn React",
+            description:"Understanding Components",
+            status: "Completed"
+        },
+        {
+            id:2,
+            title:"Learn JavaScript",
+            description:"Understanding Variables, Functions",
+            status: "Pending"
+        },
+        {  id:3,
+            title:"Learn MongoDB",
+            description:"Understanding Databases",
+            status: "Pending"
+        }
+        
+    ]);
+    function toggleTask(id){
+        setTasks(
+            tasks.map((task) => {
+                if(task.id===id){
+                    return{...task,
+                        status: task.status === "Completed" 
+                                        ? "Pending"
+                                        :"Completed"
+                    };
+                }
+                return task;
+            })
+        );
+    }
+    function addTask(newTask){
+        setTasks([...tasks,newTask]);
+        console.log("newtask:",newTask)
+    }
+    return  (
+      <main>
             <div className="stats-container">
-                <StatCard title={"Total Tasks"}
-                value ={"10"}/>
-                <StatCard title={"Completed"}
-                value={"6"} />
-                <StatCard title={"Pending"}
-                value={"4"} />
-                <StatCard title={"Time Taken"}
-                value={"1hr"}/>
+                <StatCard title="Total Tasks" value="10"/>
+                <StatCard title="Completed" value="6"/>
+                <StatCard title="Pending" value="4"/>
+                
             </div>
-
+<AddTask onAddTask={addTask} />
             <h2>Recent Tasks</h2>
 
-           <div className="task-container">
-                {tasks.map((task) => (
-                  <TaskCard title={task.title} description={task.values} status={task.status} />
-                ))}
+            <div className="tasks-container">
+                {tasks.map((task)=>(
+                    <TaskCard key={task.id} title={task.title} description={task.description} status={task.status} 
+                    onToggle={()=>toggleTask(task.id)} />
+                ))};
             </div>
 
         </main>

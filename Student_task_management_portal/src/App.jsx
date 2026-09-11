@@ -1,15 +1,42 @@
 import "./App.css";
-
+import Tasks from "./components/Tasks";
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
 import Dashboard from "./components/DashBoard";
+import { Routes, Route } from "react-router-dom";
+import TaskDetails from "./components/TaskDetails";
+import { useState } from "react";  // ✅ Added
 
-function App(){
+function App() {
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      title: "Learn React",
+      description: "Understanding Components",
+      status: "Completed"
+    },
+    {
+      id: 2,
+      title: "Learn JavaScript",
+      description: "Understanding Variables, Functions",
+      status: "Pending"
+    },
+    {
+      id: 3,
+      title: "Learn MongoDB",
+      description: "Understanding Databases",
+      status: "Pending"
+    }
+  ]);
+
   return (
     <div>
       <Navbar />
-      <Welcome />
-      <Dashboard />
+      <Routes>
+        <Route path="/" element={<Dashboard tasks={tasks} setTasks={setTasks} />} /> 
+        <Route path="/tasks" element={<Tasks />} />
+        <Route path="/tasks/:id" element={<TaskDetails />} />
+      </Routes>
     </div>
   );
 }

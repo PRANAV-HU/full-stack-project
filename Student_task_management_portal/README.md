@@ -1,34 +1,16 @@
-# 🎬 Movie & Show Watchlist
+# React + Vite
 
-A MERN-stack movie/show watchlist application built from the existing Student Task Management Portal starter project.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Current stage
+Currently, two official plugins are available:
 
-The React/Vite frontend has been converted from task management to the Movie / Show Watchlist domain. It currently uses sample in-memory data so the UI can be developed before the Express API and MongoDB layers are added.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Features
+## React Compiler
 
-- Add movies and TV shows
-- Mark items as watched / want to watch
-- Rate items from 1–5 stars
-- Search by title
-- Filter by genre and watch status
-- Dashboard statistics
-- Delete watchlist items
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Planned MERN stack
+## Expanding the ESLint configuration
 
-- MongoDB Atlas
-- Express.js
-- React
-- Node.js
-- JWT authentication
-
-## Development
-
-```bash
-npm install
-npm run dev
-```
-
-The project is being developed in the `movie-watchlist` branch of the `PRANAV-HU/full-stack-project` repository.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
